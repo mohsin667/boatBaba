@@ -118,8 +118,8 @@ function Home() {
   };
 
   const createUser = async () => {
-    setToggleDrawer(!toggleDrawer);
-    setAddUser(!addUser);
+    setToggleDrawer(true);
+    setAddUser(true);
   };
 
   return (
