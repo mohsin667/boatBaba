@@ -19,6 +19,7 @@ function Home() {
     last_name: "",
     email: ""
   });
+
   const [data, setData] = useState([]);
   const [flashMessage, setFlasgMessage] = useState({ message: "", display: false });
   const [loading, setIsLoading] = useState(false);
@@ -121,7 +122,6 @@ function Home() {
     setAddUser(!addUser);
   };
 
-  console.log();
   return (
     <>
       <Container maxWidth="lg">
