@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
@@ -10,6 +10,7 @@ import axios from "axios";
 import { Button, Pagination } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import Spinner from "./Spinner";
 
 function Home() {
   const [addUser, setAddUser] = useState(false);
@@ -43,7 +44,7 @@ function Home() {
   const handleDelete = async index => {
     const res = await axios.delete(`https://reqres.in/api/users/${index}`);
     if (res.status === 204) {
-      const newData = data.data.filter(user => user.id != index);
+      const newData = data.data.filter(user => user.id !== index);
       setData({ ...data, data: newData });
       setFlasgMessage({ message: "User have been deleted", display: true });
       fuseFlashMessage();
@@ -57,7 +58,7 @@ function Home() {
   };
 
   if (loading === false) {
-    return "Loading....";
+    return <Spinner />;
   }
 
   const onInputChange = e => {
@@ -70,7 +71,7 @@ function Home() {
     await axios.put(`https://reqres.in/api/users/${index}`, user).then(res => {
       if (res.status === 200) {
         const newData = data.data.map(user => {
-          if (user.id == index) {
+          if (user.id === index) {
             return {
               ...user,
               ...res.data
