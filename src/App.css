@@ -42,6 +42,7 @@
 }
 
 .mainBox {
+  padding: 10px 0;
   align-items: center;
   display: flex;
   flex-flow: wrap;
